@@ -11,8 +11,7 @@ pipeline {
 
         stage('Git Checkout') {
             steps {
-                git branch: 'main',
-                url: 'https://github.com/prashaakshi/node-app-devops.git'
+                git branch: 'main', url: 'https://github.com/prashaakshi/node-app-devops.git'
             }
         }
 
