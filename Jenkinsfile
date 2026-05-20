@@ -37,7 +37,7 @@ pipeline {
  stage('Deploy to App Host') {
     steps {
         sh '''
-        /usr/bin/ssh -i /home/ec2-user/ProjectKey.pem -o StrictHostKeyChecking=no ec2-user@10.0.3.99 "
+        /usr/bin/ssh -i /tmp/ProjectKey.pem -o StrictHostKeyChecking=no ec2-user@10.0.3.99 "
 
             docker pull $ECR_REPO:$IMAGE_TAG
 
