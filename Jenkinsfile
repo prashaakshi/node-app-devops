@@ -37,7 +37,7 @@ pipeline {
       stage('Deploy to App Host') {
     steps {
         sh '''
-        ssh -o StrictHostKeyChecking=no ec2-user@10.0.3.99 "
+        ssh -i /var/lib/jenkins/ProjectKey.pem -o StrictHostKeyChecking=no ec2-user@10.0.3.99 "
             docker pull $ECR_REPO:$IMAGE_TAG
 
             docker stop node-app || true
