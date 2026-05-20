@@ -7,18 +7,7 @@ pipeline {
         IMAGE_TAG = "latest"
     }
 
-    stages {
-
-        stage('Git Checkout') {
-    steps {
-        checkout([$class: 'GitSCM',
-            branches: [[name: '*/main']],
-            userRemoteConfigs: [[
-                url: 'https://github.com/prashaakshi/node-app-devops.git'
-            ]]
-        ])
-    }
-}
+   
 
         stage('Build Docker Image') {
             steps {
