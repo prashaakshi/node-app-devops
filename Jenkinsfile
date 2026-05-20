@@ -34,19 +34,19 @@ pipeline {
             }
         }
 
-        stage('Deploy to App Host') {
-            steps {
-                sh '''
-                ssh ec2-user@10.0.3.99 "
-                    docker pull $ECR_REPO:$IMAGE_TAG
+      stage('Deploy to App Host') {
+    steps {
+        sh '''
+        ssh -o StrictHostKeyChecking=no ec2-user@10.0.3.99 "
+            docker pull $ECR_REPO:$IMAGE_TAG
 
-                    docker stop node-app || true
-                    docker rm node-app || true
+            docker stop node-app || true
+            docker rm node-app || true
 
-                    docker run -d --name node-app -p 80:3000 $ECR_REPO:$IMAGE_TAG
-                "
-                '''
-            }
-        }
+            docker run -d --name node-app -p 80:3000 $ECR_REPO:$IMAGE_TAG
+        "
+        '''
+    }
+}
     }
 }
