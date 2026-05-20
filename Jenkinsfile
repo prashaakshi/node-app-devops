@@ -10,10 +10,15 @@ pipeline {
     stages {
 
         stage('Git Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/prashaakshi/node-app-devops.git'
-            }
-        }
+    steps {
+        checkout([$class: 'GitSCM',
+            branches: [[name: '*/main']],
+            userRemoteConfigs: [[
+                url: 'https://github.com/prashaakshi/node-app-devops.git'
+            ]]
+        ])
+    }
+}
 
         stage('Build Docker Image') {
             steps {
