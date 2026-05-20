@@ -9,6 +9,13 @@ pipeline {
 
     stages {
 
+        stage('Git Checkout') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/prashaakshi/node-app-devops.git'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 dir('server') {
