@@ -34,7 +34,7 @@ pipeline {
             }
         }
 
-      stage('Deploy to App Host') {
+  stage('Deploy to App Host') {
     steps {
         sh '''
         sudo ssh -i /home/ec2-user/ProjectKey.pem -o StrictHostKeyChecking=no ec2-user@10.0.3.99 "
